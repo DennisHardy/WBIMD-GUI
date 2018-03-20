@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	background-color: #F2F2F2;
+}
+h2{
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+main{
+	background-color: #FFFFFF; 
+	max-width: 800px; 
+	margin: auto;
+	padding-bottom: 50px;
+}
+
+.mdc-select, .mdc-text-field{
+	margin-left: 25%;
+	width: 50%;
+	margin-bottom: 0px;
+}
+
+button{
+	margin-right: 20px;
+	float: right;
+}

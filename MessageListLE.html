@@ -1,0 +1,157 @@
+<!doctype html>
+<!--There are two way i can think of "opening a message". The first would be to load every parameter of every message...
+	onto the message page and hide the unwanted elements from being displayed. The other method would be to load only
+	the elements displayed in the list then use a webservices call to pull each entire message when clicked into.
+	The webservices method is probably the better choice especially if there is a 'getMessageById' function that can return
+	all the recieved parameters of the message. This file is the outline for the Load everything version. webservice version is
+	index.html
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Message List Load Everything</title>
+	<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+	<link rel="stylesheet" href="datatable.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"><style>:root { --mdc-theme-primary: #003366;}
+		:root { --mdc-theme-secondary: #cc0033;}
+</style>
+</head>
+
+<body>
+	<header class="mdc-toolbar mdc-toolbar--fixed">
+      <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
+          <span class="mdc-toolbar__title">All Messages</span>
+        </section>
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+		  <a href="#" class="material-icons mdc-toolbar__icon" aria-label="Search Messages" alt="Search Messages">search</a>
+          <a href="#" class="material-icons mdc-toolbar__icon" aria-label="New Message" alt="New Message">note_add</a>
+          <a href="#" class="material-icons mdc-toolbar__icon" aria-label="Admin Panel" alt="Admin Panel">settings</a>
+        </section>
+      </div>
+    </header>
+	<main>
+	<div class="mdc-toolbar-fixed-adjust">
+	<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+	  <th class="mdl-data-table__cell--numeric" hidden="hidden">Call Id</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Call Time</th>
+      <th class="mdl-data-table__cell--non-numeric">Message Recieved</th> <!--localtime-->
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Direction</th>
+      <th class="mdl-data-table__cell--numeric">Sender MMSI</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Format</th>
+      <th class="mdl-data-table__cell--non-numeric">Message Type</th>  <!--category-->
+      <th class="mdl-data-table__cell--numeric">Location</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Nature</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Subsequent Comms</th>
+	  <th class="mdl-data-table__cell--non-numeric">Status</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">TeleCmd1</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">TeleCmd2</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Tranmit Frequency</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Recieve Frequency</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">EOS</th>
+	  <th class="mdl-data-table__cell--non-numeric" hidden="hidden">Sync</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="m1002329">
+      <td class="mdl-data-table__cell--numeric" hidden="hidden">Call Id</td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Call Time</td>
+      <td class="mdl-data-table__cell--non-numeric">Message Recieved</td> <!--localtime-->
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Direction</td>
+      <td class="mdl-data-table__cell--numeric">Sender MMSI</td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Format</td>
+      <td class="mdl-data-table__cell--non-numeric">Message Type</td>  <!--category-->
+      <td class="mdl-data-table__cell--numeric">Location</td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Nature</td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Subsequent Comms</td>
+	  <td class="mdl-data-table__cell--non-numeric">Status</td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">TeleCmd1: </td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">TeleCmd2: </td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Tranmit Frequency: </td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Recieve Frequency: </td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">EOS: EOS</td>
+	  <td class="mdl-data-table__cell--non-numeric" hidden="hidden">Sync: No</td>
+    </tr>
+	<tr id="m1002328">
+      <td class="mdl-data-table__cell--non-numeric">November 16, 2017 22:58:52</td>
+      <td class="mdl-data-table__cell--numeric">366366367</td>
+      <td class="mdl-data-table__cell--non-numeric">Urgency</td>
+      <td class="mdl-data-table__cell--numeric">00º 00.0000'  000º 00.0000'</td>
+	  <td class="mdl-data-table__cell--non-numeric">New</td>
+    </tr>
+	<tr id="m1002327">
+      <td class="mdl-data-table__cell--non-numeric">November 16, 2017 22:54:24</td>
+      <td class="mdl-data-table__cell--numeric">366366367</td>
+      <td class="mdl-data-table__cell--non-numeric">Safety</td>
+      <td class="mdl-data-table__cell--numeric">00º 00.0000'  000º 00.0000'</td>
+	  <td class="mdl-data-table__cell--non-numeric">New</td>
+    </tr>
+  </tbody>
+</table>
+	</div>
+		
+	<aside id="my-mdc-dialog"
+  class="mdc-dialog"
+  role="alertdialog"
+  aria-labelledby="my-mdc-dialog-label"
+  aria-describedby="my-mdc-dialog-description">
+  <div class="mdc-dialog__surface">
+    <header class="mdc-dialog__header">
+      <h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+        Message 1002329
+      </h2>
+    </header>
+    <section id="my-mdc-dialog-description" class="mdc-dialog__body">
+      <ul>
+		  <li id="dialogMessageID">Call ID: 1002329</li>
+		  <li id="dialogCallTime">Call Time: 171116 23:03:04</li>
+		  <li id="dialogLocTime">Local Time: 171116 23:03:04</li>
+		  <li id="dialogDirection">Direction: Rx</li>
+		  <li id="dialogCarrier">Carrier: ch70</li>
+		  <li id="dialogFormat">Format: Distress</li>
+		  <li id="dialogCat" hidden="hidden">Category: Distress</li>
+		  <li id="dialogFrom">From: 366366367</li>
+		  <li id="dialogPos">Position: 38º33.5300'N076º21.060'W11:28</li>
+		  <li id="dialogNature">Nature: Flooding</li>
+		  <li id="dialogSubCom">Subsequent Comms: F3E/G3E simplex</li>
+		  <li id="dialogTeleCmd1" hidden="hidden">TeleCmd1: </li>
+		  <li id="dialogTeleCmd2" hidden="hidden">TeleCmd2: </li>
+		  <li id="dialogTxFreq" hidden="hidden">Tranmit Frequency: </li>
+		  <li id="dialogRxFreq" hidden="hidden">Recieve Frequency: </li>
+		  <li id="dialogEOS">EOS: EOS</li>
+		  <li id="dialogSync">Sync: No</li>
+	  </ul>
+    </section>
+    <footer class="mdc-dialog__footer">
+      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Close Message</button>
+      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Send Acknowledgement</button>
+    </footer>
+  </div>
+  <div class="mdc-dialog__backdrop"></div>
+</aside>
+	</main>
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>window.mdc.autoInit();</script>
+	<script>
+	var dialog = new mdc.dialog.MDCDialog(document.querySelector('#my-mdc-dialog'));
+
+dialog.listen('MDCDialog:accept', function() {
+  console.log('Sent Acknowledgement');
+	
+})
+
+dialog.listen('MDCDialog:cancel', function() {
+  console.log('canceled');
+})
+
+document.querySelector('#m1002329').addEventListener('click', function (evt) {
+  dialog.lastFocusedTarget = evt.target;
+  dialog.show();
+})
+	</script>
+</body>
+</html>

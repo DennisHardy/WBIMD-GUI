@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Composition</title>
+	<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+	<link rel="stylesheet" href="datatable.css">
+	<link rel="stylesheet" href="WBIMD.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>:root {--mdc-theme-primary: #003366;}</style>
+	<style>:root {--mdc-theme-secondary: #cc0033;}</style>
+	<style>:root {--mdc-theme-background: #F2F2F2;}</style>
+</head>
+
+<body>
+	<header class="mdc-toolbar mdc-toolbar--fixed">
+		<div class="mdc-toolbar__row">
+			<section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+				<a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
+				<span class="mdc-toolbar__title">Message Composition</span>
+			</section>
+			<section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+				<a href="#" class="material-icons mdc-toolbar__icon" aria-label="Search Messages" alt="Search Messages">search</a>
+				<a href="index.html" class="material-icons mdc-toolbar__icon" aria-label="New Message" alt="New Message">list</a>
+				<a href="#" class="material-icons mdc-toolbar__icon" aria-label="Admin Panel" alt="Admin Panel">settings</a>
+			</section>
+		</div>
+	</header>
+	<main>
+		<div class="mdc-toolbar-fixed-adjust">
+			<h2 class="mdc-typography--display1" id="CompTitle">New Message</h2>
+			<div class="mdc-select" role="listbox" id="meessageType" >
+			  <div class="mdc-select__surface" tabindex="0">
+				<div class="mdc-select__label">Message Type</div>
+				<div class="mdc-select__selected-text"></div>
+				<div class="mdc-select__bottom-line"></div>
+			  </div>
+			  <div class="mdc-menu mdc-select__menu">
+				<ul class="mdc-list mdc-menu__items">
+				  <li class="mdc-list-item" role="option" tabindex="0">
+					Routine
+				  </li>
+				  <li class="mdc-list-item" role="option" tabindex="0">
+					Safety
+				  </li>
+				  <li class="mdc-list-item" role="option" tabindex="0">
+					Urgency
+				  </li>
+				  <li class="mdc-list-item" role="option" tabindex="0">
+					Distress Acknowledgement 
+				  </li>
+				  <li class="mdc-list-item" role="option"  aria-disabled="true" tabindex="-1">
+					Distress
+				  </li>
+				</ul>
+			  </div>
+			</div>
+			
+			<div class="compForm" id="DistressAck" hidden="hidden">
+				<!-- Add validation to MMSI & Position Change Nature & SC to select-->
+				<form>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" class="mdc-text-field__input" id="dialogFrom" value ="366366367">
+					  <label class="mdc-floating-label mdc-floating-label--float-above" for="dialogFrom">Responding to</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+					<br>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" class="mdc-text-field__input" id="dialogPos" value ="38º33.5300'N076º21.060'W11:28">
+					  <label class="mdc-floating-label mdc-floating-label--float-above" for="dialogPos">Position</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+					<br>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" class="mdc-text-field__input" id="dialogNature" value ="Flooding">
+					  <label class="mdc-floating-label mdc-floating-label--float-above" for="dialogNature">Nature</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+					<br>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" class="mdc-text-field__input" id="dialogSubCom" value ="F3E/G3E simplex">
+					  <label class="mdc-floating-label mdc-floating-label--float-above" for="dialogSubCom">Subsequent Comms:</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+					<br>
+					<button class="mdc-button mdc-button--raised">
+					  <i class="material-icons mdc-button__icon">send</i>
+					  Send
+					</button>
+				</form>
+			</div>
+			<div class="compForm" id="AllShips" hidden="hidden">
+				<form>
+				<div class="mdc-select" role="listbox" id="cat" aria-disabled="true" >
+				  <div class="mdc-select__surface" tabindex="0">
+					<div class="mdc-select__label">Category</div>
+					<div class="mdc-select__selected-text"></div>
+					<div class="mdc-select__bottom-line"></div>
+				  </div>
+				  <div class="mdc-menu mdc-select__menu">
+					<ul class="mdc-list mdc-menu__items">
+					  <li class="mdc-list-item" role="option" tabindex="0">
+						Urgency
+					  </li>
+					  <li class="mdc-list-item" role="option" tabindex="0">
+						Safety
+					  </li>
+					</ul>
+				  </div>
+				</div>
+				<br>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" id="TC1" class="mdc-text-field__input" >
+					  <label class="mdc-floating-label" for="TC1">TC1</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+				<br>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" id="TC2" class="mdc-text-field__input" >
+					  <label class="mdc-floating-label" for="TC2">TC2</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+					<br>
+					<button class="mdc-button mdc-button--raised">
+					  <i class="material-icons mdc-button__icon">send</i>
+					  Send
+					</button>
+				</form>
+			</div>
+			<div class="compForm" id="Routine" hidden="hidden">
+				<form>
+				<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" id="RTC1" class="mdc-text-field__input" >
+					  <label class="mdc-floating-label" for="RTC1">TC1</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+				<br>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" id="RTC2" class="mdc-text-field__input" >
+					  <label class="mdc-floating-label" for="RTC2">TC2</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+					<br>
+					<button class="mdc-button mdc-button--raised">
+					  <i class="material-icons mdc-button__icon">send</i>
+					  Send
+					</button>
+				</form>
+			</div>
+			<div class="compForm" id="Distress" hidden="hidden">
+			</div>
+		</div>
+	</main>
+	
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
+	<script>
+		window.mdc.autoInit();
+		const cat = new mdc.select.MDCSelect(document.getElementById("cat"));
+		const formType = new mdc.select.MDCSelect(document.getElementById("meessageType"));
+
+		formType.listen('MDCSelect:change', () => {
+		  //alert(`Selected "${formType.selectedOptions[0].textContent}" at index ${formType.selectedIndex}`+`with value "${formType.value}"`);
+			
+			var RoutineForm = document.getElementById("Routine");
+			var DistressAckForm = document.getElementById("DistressAck");
+			var AllShipsForm = document.getElementById("AllShips");
+			var title = document.getElementById("CompTitle")
+
+			var FormChoice = formType.selectedIndex; //0=routine 1=Safety 2=Urgency 3=Distress Ack 
+
+			console.log(FormChoice);
+			switch(FormChoice) {
+				case 0://routine
+					title.innerHTML='New Routine Message'
+					RoutineForm.style.display='block';
+					DistressAckForm.style.display ='none';
+					AllShipsForm.style.display='none';
+					break;
+
+				case 1://Safety
+					title.innerHTML='New All Ships Message'
+					cat.selectedIndex = 1;
+					RoutineForm.style.display='none';
+					DistressAckForm.style.display ='none';
+					AllShipsForm.style.display='block';
+					break;
+
+				case 2://Urgency
+					title.innerHTML='New All Ships Message'
+					cat.selectedIndex = 0;
+					RoutineForm.style.display='none';
+					DistressAckForm.style.display ='none';
+					AllShipsForm.style.display='block';
+					break;
+
+				case 3://Distress Ack
+					title.innerHTML='New Distress Acknowledgement Message'
+					RoutineForm.style.display='none';
+					DistressAckForm.style.display ='block';
+					AllShipsForm.style.display='none';
+					break;
+
+				default:
+					title.innerHTML='New Message'
+					RoutineForm.style.display='none';
+					DistressAckForm.style.display ='none';
+					AllShipsForm.style.display='none';
+					break;
+			 }
+		});
+	</script>
+</body>
+</html>

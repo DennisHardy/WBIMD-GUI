@@ -16,10 +16,21 @@ main{
 	padding-bottom: 50px;
 }
 
-.mdc-select, .mdc-text-field{
+.mdc-select, .mdc-text-field {
 	margin-left: 25%;
-	width: 50%;
+	min-width: 50%;
 	margin-bottom: 0px;
+	margin-top: 0.75em;
+}
+
+.mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box){
+	margin-top: 0.75em;
+}
+.mdc-radio-row {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0.75em;
+	width: 52%;
 }
 
 button{

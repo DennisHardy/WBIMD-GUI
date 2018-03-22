@@ -58,7 +58,7 @@
 			</div>
 			
 			<div class="compForm" id="DistressAck" hidden="hidden">
-				<!-- Add validation to MMSI & Position Change Nature & SC to select-->
+				<!-- Add validation to Position -->
 				<form>
 					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
 					  <input type="text" class="mdc-text-field__input" id="dialogFrom" value ="366366367" required pattern="\d{9}">
@@ -152,7 +152,6 @@
 			</div>
 			<div class="compForm" id="UrgencySafety" hidden="hidden">
 				<form>
-				<br>
 					<div class="mdc-select" role="listbox" id="USFS" data-mdc-auto-init="MDCSelect">
 					  <div class="mdc-select__surface" tabindex="0">
 						<div class="mdc-select__label">Format Specifier</div>
@@ -173,6 +172,7 @@
 						</ul>
 					  </div>
 					</div>
+					<br>
 					<div class="mdc-select" role="listbox" id="USCAT" data-mdc-auto-init="MDCSelect">
 					  <div class="mdc-select__surface" tabindex="0">
 						<div class="mdc-select__label">Category</div>
@@ -190,11 +190,13 @@
 						</ul>
 					  </div>
 					</div>
+					<br>
 					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
 					  <input type="text" id="UAddr" class="mdc-text-field__input" pattern="\d{9}">
 					  <label class="mdc-floating-label" for="USAddr">Address</label>
 					  <div class="mdc-line-ripple"></div>
 					</div>
+					<br>
 					<div class="mdc-select" role="listbox" id="USTC1" data-mdc-auto-init="MDCSelect">
 					  <div class="mdc-select__surface" tabindex="0">
 						<div class="mdc-select__label">Telecommand 1</div>
@@ -230,7 +232,7 @@
 						</ul>
 					  </div>
 					</div>
-				<br>
+					<br>
 					<div class="mdc-select" role="listbox" id="USTC2" data-mdc-auto-init="MDCSelect">
 					  <div class="mdc-select__surface" tabindex="0">
 						<div class="mdc-select__label">Telecommand 2</div>
@@ -282,7 +284,49 @@
 					  </div>
 					</div>
 					<br>
-					<button class="mdc-button mdc-button--raised">
+					<div class="mdc-radio-row">
+						<div class="mdc-form-field">
+							<div class="mdc-radio" id="USFreq">
+							  <input class="mdc-radio__native-control" type="radio" id="rad1" name="USFCHO" onclick="FCHUS()">
+							  <div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							  </div>
+							</div>
+							<label for="rad1">Frequency</label>
+						</div>
+
+						<div class="mdc-form-field">
+							<div class="mdc-radio" id="USHFMF">
+							  <input class="mdc-radio__native-control" type="radio" id="rad2" name="USFCHO" onclick="FCHUS()">
+							  <div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							  </div>
+							</div>
+							<label for="rad2">HF/MF Channel</label>
+						</div>
+						
+						<div class="mdc-form-field">
+							<div class="mdc-radio" id="USVHF">
+							  <input class="mdc-radio__native-control" type="radio" id="rad3" name="USFCHO" onclick="FCHUS()">
+							  <div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							  </div>
+							</div>
+							<label for="rad3">VHF Channel</label>
+						</div>
+					</div>
+				
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" id="USFCH" class="mdc-text-field__input" pattern="\d{1,5}">
+						<p class="mdc-typography" id="units">Hz</p>
+					  <label class="mdc-floating-label" for="USFCH" id="USFCHLabel">Frequency</label>
+					  <div class="mdc-line-ripple"></div>
+					</div>
+					<br>
+					<button class="mdc-button mdc-button--raised" onClick="sendMessage()">
 					  <i class="material-icons mdc-button__icon">send</i>
 					  Send
 					</button>
@@ -290,15 +334,167 @@
 			</div>
 			<div class="compForm" id="Routine" hidden="hidden">
 				<form>
-				<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-					  <input type="text" id="RTC1" class="mdc-text-field__input" >
-					  <label class="mdc-floating-label" for="RTC1">TC1</label>
+					<div class="mdc-select" role="listbox" id="RFS" data-mdc-auto-init="MDCSelect">
+						  <div class="mdc-select__surface" tabindex="0">
+							<div class="mdc-select__label">Format Specifier</div>
+							<div class="mdc-select__selected-text"></div>
+							<div class="mdc-select__bottom-line"></div>
+						  </div>
+						  <div class="mdc-menu mdc-select__menu">
+							<ul class="mdc-list mdc-menu__items">
+							  <li class="mdc-list-item" role="option" tabindex="0">
+								114 Ships haing common intrest
+							  </li>
+							  <li class="mdc-list-item" role="option" tabindex="0">
+								120 Individual Stations
+							  </li>
+							</ul>
+						  </div>
+						</div>
+					<br>
+					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+					  <input type="text" id="RAddr" class="mdc-text-field__input" pattern="\d{9}">
+					  <label class="mdc-floating-label" for="RAddr">Address</label>
 					  <div class="mdc-line-ripple"></div>
 					</div>
-				<br>
+					<br>
+					<div class="mdc-select" role="listbox" id="RCat" data-mdc-auto-init="MDCSelect" aria-disabled="true">
+					  <div class="mdc-select__surface" tabindex="0">
+						  <div class="mdc-select__selected-text">100 Routine</div>
+						  <div class="mdc-select__label mdc-select__label--float-above" aria-selected="true">Category</div>
+						<div class="mdc-select__selected-text"></div>
+						<div class="mdc-select__bottom-line"></div>
+					  </div>
+					  <div class="mdc-menu mdc-select__menu">
+						<ul class="mdc-list mdc-menu__items">
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							100 Routine
+						  </li>
+						</ul>
+					  </div>
+					</div>
+					<br>
+					<div class="mdc-select" role="listbox" id="RTC1" data-mdc-auto-init="MDCSelect">
+					  <div class="mdc-select__surface" tabindex="0">
+						<div class="mdc-select__label">Telecommand 1</div>
+						<div class="mdc-select__selected-text"></div>
+						<div class="mdc-select__bottom-line"></div>
+					  </div>
+					  <div class="mdc-menu mdc-select__menu">
+						<ul class="mdc-list mdc-menu__items">
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							100 F3E/G3E All modes TP
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							101 F3E/G3E duplex TP
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							103 Polling
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							104 Unable to comply
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							106 Data
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							109 J3E TP
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							113 F1B/J2B TTYFEC
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							115 F1B/J2B TTYARQ
+						  </li>
+						</ul>
+					  </div>
+					</div>
+					<br>
+					<div class="mdc-select" role="listbox" id="RTC2" data-mdc-auto-init="MDCSelect">
+					  <div class="mdc-select__surface" tabindex="0">
+						<div class="mdc-select__label">Telecommand 2</div>
+						<div class="mdc-select__selected-text"></div>
+						<div class="mdc-select__bottom-line"></div>
+					  </div>
+					  <div class="mdc-menu mdc-select__menu">
+						<ul class="mdc-list mdc-menu__items">
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							100 No reason given
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							101 Congestion at maritime switching centre
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							102 Busy
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							103 Queue indication
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							104 Station barred
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							105 No operator available
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							106 Operator temporarily unavailable
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							107 Equipment disabled
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							108 Unable to use proposed mode
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							109 Unable to use proposed mode
+						  </li>
+						  <li class="mdc-list-item" role="option" tabindex="0">
+							126 No information
+						  </li>
+						</ul>
+					  </div>
+					</div>
+					<br>
+					<br>
+					<div class="mdc-radio-row">
+						<div class="mdc-form-field">
+							<div class="mdc-radio" id="RFreq">
+							  <input class="mdc-radio__native-control" type="radio" id="rad4" name="RFCHO" onclick="FCHR()">
+							  <div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							  </div>
+							</div>
+							<label for="rad4">Frequency</label>
+						</div>
+
+						<div class="mdc-form-field">
+							<div class="mdc-radio" id="RHFMF">
+							  <input class="mdc-radio__native-control" type="radio" id="rad5" name="RFCHO" onclick="FCHR()">
+							  <div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							  </div>
+							</div>
+							<label for="rad5">HF/MF Channel</label>
+						</div>
+						
+						<div class="mdc-form-field">
+							<div class="mdc-radio" id="RVHF">
+							  <input class="mdc-radio__native-control" type="radio" id="rad6" name="RFCHO" onclick="FCHR()">
+							  <div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							  </div>
+							</div>
+							<label for="rad3">VHF Channel</label>
+						</div>
+					</div>
+				
 					<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-					  <input type="text" id="RTC2" class="mdc-text-field__input" >
-					  <label class="mdc-floating-label" for="RTC2">TC2</label>
+					  <input type="text" id="RFCH" class="mdc-text-field__input" pattern="\d{1,5}">
+						<p class="mdc-typography" id="Uunits">Hz</p>
+					  <label class="mdc-floating-label" for="RFCH" id="RFCHLabel">Frequency</label>
 					  <div class="mdc-line-ripple"></div>
 					</div>
 					<br>
@@ -309,6 +505,7 @@
 				</form>
 			</div>
 			<div class="compForm" id="Distress" hidden="hidden">
+				
 			</div>
 		</div>
 	</main>
@@ -316,8 +513,15 @@
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
 	<script>
 		window.mdc.autoInit();
+		//mdc.radio.MDCRadio.attachTo(document.querySelector('.mdc-radio'));
 		const formType = new mdc.select.MDCSelect(document.getElementById("meessageType"));
 		const Cat = new mdc.select.MDCSelect(document.getElementById("USCAT"));
+		const USFreq =new mdc.radio.MDCRadio(document.getElementById("USFreq"));
+		const USHFMF =new mdc.radio.MDCRadio(document.getElementById("USHFMF"));
+		const USVHF =new mdc.radio.MDCRadio(document.getElementById("USVHF"));
+		const RFreq =new mdc.radio.MDCRadio(document.getElementById("RFreq"));
+		const RHFMF =new mdc.radio.MDCRadio(document.getElementById("RHFMF"));
+		const RVHF =new mdc.radio.MDCRadio(document.getElementById("RVHF"));
 		formType.listen('MDCSelect:change', () => {
 		  //alert(`Selected "${formType.selectedOptions[0].textContent}" at index ${formType.selectedIndex}`+`with value "${formType.value}"`);
 			
@@ -343,6 +547,7 @@
 					DistressAckForm.style.display ='none';
 					UrgencySafety.style.display='block';
 					Cat.selectedIndex = 0;
+					Cat.disabled = true;
 					break;
 
 				case 2://Urgency
@@ -351,6 +556,7 @@
 					DistressAckForm.style.display ='none';
 					UrgencySafety.style.display='block';
 					Cat.selectedIndex = 1;
+					Cat.disabled = true;
 					break;
 
 				case 3://Distress Ack
@@ -368,6 +574,59 @@
 					break;
 			 }
 		});
+	
+	</script>
+	<script>
+		function sendMessage(){
+			
+			
+		}
+		function FCHUS(){
+			var fieldLabel=document.getElementById("USFCHLabel");
+			if(USFreq.checked){
+				console.log("FREQ");
+				fieldLabel.innerHTML="Frequency";
+				document.getElementById("units").innerHTML='Hz';
+				document.getElementById("USFCH").pattern='\\d{1,5}00';
+			}
+			else if(USHFMF.checked){
+				console.log("HFMF");
+				fieldLabel.innerHTML="HF/MF Channel";
+				document.getElementById("units").innerHTML='';
+				document.getElementById("USFCH").pattern='\\d{1,5}'
+			}
+			else if(USVHF.checked){
+				console.log("VHF");
+				fieldLabel.innerHTML="VHF Channel";
+				document.getElementById("units").innerHTML='';
+			}
+			else{
+				console.log("wut");
+			}
+		}
+		function FCHR(){
+			var fieldLabel=document.getElementById("RFCHLabel");
+			if(RFreq.checked){
+				console.log("FREQ");
+				fieldLabel.innerHTML="Frequency";
+				document.getElementById("Uunits").innerHTML='Hz';
+				document.getElementById("RFCH").pattern='\\d{1,5}00';
+			}
+			else if(RHFMF.checked){
+				console.log("HFMF");
+				fieldLabel.innerHTML="HF/MF Channel";
+				document.getElementById("Uunits").innerHTML='';
+				document.getElementById("RFCH").pattern='\\d{1,5}'
+			}
+			else if(RVHF.checked){
+				console.log("VHF");
+				fieldLabel.innerHTML="VHF Channel";
+				document.getElementById("Uunits").innerHTML='';
+			}
+			else{
+				console.log("wut");
+			}
+		}
 	</script>
 </body>
 </html>
